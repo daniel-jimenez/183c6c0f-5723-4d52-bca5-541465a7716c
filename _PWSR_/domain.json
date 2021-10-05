@@ -1,0 +1,32 @@
+{
+  "host": "",
+  "release": "v2",
+  "lang": {
+    "default": "en-US",
+    "options": [
+      "en-US",
+      "es-MX"
+    ]
+  },
+  "captcha": {
+    "publicKey": ""
+  },
+  "stripe": {
+    "publicKey": "",
+    "publicKeyTest": ""
+  },
+  "mountpoints": [
+    {
+      "siteid": "a8b5d16b-6c12-4107-a668-7fcf8bedbb8f",
+      "type": "root",
+      "mountpoint": "",
+      "root": ""
+    }
+  ],
+  "sites": [
+    {
+      "siteid": "a8b5d16b-6c12-4107-a668-7fcf8bedbb8f",
+      "mountpoint": "/"
+    }
+  ]
+}
