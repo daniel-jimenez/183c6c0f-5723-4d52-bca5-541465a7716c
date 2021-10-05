@@ -2292,8 +2292,8 @@
     "style": {
       "inline": "",
       "includes": [
-        "https://{{domain}}/_PWSR_/lib/tailwind/tailwind.min.css",
-        "https://{{domain}}/_PWSR_/lib/font-awesome-4.7.0/css/font-awesome.min.css"
+        "https://pages.listws.com/_PWSR_/lib/tailwind/tailwind.min.css",
+        "https://pages.listws.com/_PWSR_/lib/font-awesome-4.7.0/css/font-awesome.min.css"
       ]
     },
     "script": {
