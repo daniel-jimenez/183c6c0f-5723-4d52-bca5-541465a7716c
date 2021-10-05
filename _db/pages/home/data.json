@@ -269,7 +269,7 @@
           },
           "layout": "large",
           "title": {
-            "en-US": "Your story starts with us!"
+            "en-US": "Your story starts with us"
           },
           "description": {
             "en-US": "{\"ops\":[{\"insert\":\"This is a simple example of a Landing Page you can build using Tailwind Starter Kit. It features multiple CSS components based on the \"},{\"attributes\":{\"bold\":true},\"insert\":\"Tailwindcss\"},{\"insert\":\" design system.\\n\"}]}"
