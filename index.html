@@ -1,0 +1,1032 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" type="text/css" href="https:///_PWSR_/lib/tailwind/tailwind.min.css">
+  <link rel="stylesheet" type="text/css" href="https:///_PWSR_/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<style>
+
+/*002427d24897d5de2881c273836cc585*/
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.flag-img { width: 2em; border: 0; }
+
+
+/*5fd5fb066793f57ab1d61498344a8c08*/
+/*begin*/
+/* Tab content - closed */
+.tab-content {
+	max-height: 0;
+	-webkit-transition: max-height .35s;
+	-o-transition: max-height .35s;
+	transition: max-height .35s;
+}
+
+/* :checked - resize to full height */
+.tab input:checked ~ .tab-content {
+	max-height: 100vh;
+}
+
+/* Label formatting when open */
+.tab input:checked + label{
+	/*@apply text-xl p-5 border-l-2 border-indigo bg-grey-lightest text-indigo*/
+	font-size: 1.25rem; /*.text-xl*/
+	padding: 1.25rem; /*.p-5*/
+	border-left-width: 2px; /*.border-l-2*/
+	border-color: #f06292; /*.border-indigo*/
+	background-color: #f8fafc; /*.bg-grey-lightest */
+	color: #f06292; /*.text-indigo*/
+}
+
+
+/* Icon */
+.tab label::after {
+	float:right;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 1.5em;
+	height: 1.5em;
+	line-height: 1.5;
+	font-size: 1.25rem;
+	text-align: center;
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+
+}
+/* Icon formatting - closed */
+.tab input[type=checkbox] + label::after {
+	content: "+";
+	font-weight:bold; /*.font-bold*/
+	border-width: 1px; /*.border*/
+	border-radius: 9999px; /*.rounded-full */
+	border-color: #b8c2cc; /*.border-grey*/
+}
+.tab input[type=radio] + label::after {
+	content: "\25BE";
+	font-weight:bold; /*.font-bold*/
+	border-width: 1px; /*.border*/
+	border-radius: 9999px; /*.rounded-full */
+	border-color: #b8c2cc; /*.border-grey*/
+}
+/* Icon formatting - open */
+.tab input[type=checkbox]:checked + label::after {
+	transform: rotate(315deg);
+	background-color: #f06292; /*.bg-indigo*/
+	color: #f8fafc; /*.text-grey-lightest*/
+}
+.tab input[type=radio]:checked + label::after {
+	transform: rotateX(180deg);
+	background-color: #f06292; /*.bg-indigo*/
+	color: #f8fafc; /*.text-grey-lightest*/
+}
+
+/*end*/
+
+/*page-config-inline*/
+
+
+</style>
+
+</head>
+<body class="text-gray-800 antialiased">
+  
+<div id="page-element-0"  pws-content="true" >
+
+<div>
+  <div>
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 "
+    >
+      <div
+        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+      >
+        <div
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+          <a
+            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+            href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
+             ><i class="fa fa-rocket"></i> Brand</a
+          ><button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+                   data-allow="true"
+            onclick="window.toggleNavbar('collapse-navbar-container')"
+          >
+            <i class="text-white fa fa-bars"></i>
+          </button>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
+          id="collapse-navbar-container"
+        >
+          <ul class="flex flex-col lg:flex-row list-none mr-auto">
+            
+            	<li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="/home"
+                ><i
+                  class="lg:text-gray-300 text-gray-500 fa fa-home text-lg leading-lg mr-2"
+                ></i>
+                Home</a>
+            </li>
+            
+            	<li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="/services"
+                ><i
+                  class="lg:text-gray-300 text-gray-500 fa fa-cogs text-lg leading-lg mr-2"
+                ></i>
+                Services</a>
+            </li>
+            
+            
+          </ul>
+          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+            
+            
+            	<li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                href="/contact"
+                ><i
+                  class="lg:text-gray-300 text-gray-500 fa fa-phone text-lg leading-lg mr-2"
+                ></i>
+                Contact</a>
+            </li>
+            
+            <li class="flex items-center">
+              <a
+                 href="#"
+                class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                type="button"
+                style="transition: all 0.15s ease 0s;"
+              >
+                <i class="fa fa-sign-in"></i> Sign Up
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    
+  </div>
+  
+  
+  
+</div>
+</div>
+
+<div id="page-element-1"  pws-content="true" ><div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 30vh;"
+      >
+        <div
+             data-background="https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/4a60c8efb55aa210663c7912e5e28842.jpg/xs.webp"
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-75 bg-black"
+          ></span>
+        </div>
+        <div class="container relative mx-auto">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div class="pr-12">
+                <h1 class="text-white font-semibold text-5xl">
+                  Your story starts with us
+                </h1>
+                
+                  
+                
+                  
+              
+              </div>
+            </div>
+          </div>
+        </div>
+  
+   
+</div>
+</div>
+
+<section id="page-element-2"  class="pb-20 bg-gray-300 -mt-24">
+  
+  <div class="flex flex-wrap">
+         
+    
+    
+    
+    
+    <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full" style="background-color: #ef5350;"
+                  >
+                    <i class="fa fa-trophy"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">
+                    Awarded Agency.</h6>
+                  
+                  <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJhdHRyaWJ1dGVzXCI6e1wiY29sb3JcIjpcIiM1MjUyNWJcIn0sXCJpbnNlcnRcIjpcIkRpdmlkZSBkZXRhaWxzIGFib3V0IHlvdXIgcHJvZHVjdCBvciBhZ2VuY3kgd29yayBpbnRvIHBhcnRzLiBBIHBhcmFncmFwaCBkZXNjcmliaW5nIGEgZmVhdHVyZSB3aWxsIGJlIGVub3VnaC5cIn0se1wiaW5zZXJ0XCI6XCJcXG5cIn1dfSJ9" class="mt-2 mb-4 text-gray-600"></div>
+
+                </div>
+              </div>
+            </div>
+    
+    
+    
+    
+    
+    <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full" style="background-color: #42a5f5;"
+                  >
+                    <i class="fa fa-code"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">
+                    Free Revisions.</h6>
+                  
+                  <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJhdHRyaWJ1dGVzXCI6e1wiY29sb3JcIjpcIiM3MTgwOTZcIn0sXCJpbnNlcnRcIjpcIktlZXAgeW91IHVzZXIgZW5nYWdlZCBieSBwcm92aWRpbmcgbWVhbmluZ2Z1bCBpbmZvcm1hdGlvbi4gUmVtZW1iZXIgdGhhdCBieSB0aGlzIHRpbWUsIHRoZSB1c2VyIGlzIGN1cmlvdXMuXCJ9LHtcImluc2VydFwiOlwiXFxuXCJ9XX0ifQ==" class="mt-2 mb-4 text-gray-600"></div>
+
+                </div>
+              </div>
+            </div>
+    
+    
+    
+    
+    
+    <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full" style="background-color: #a5d6a7;"
+                  >
+                    <i class="fa fa-certificate"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">
+                    Verified Company.</h6>
+                  
+                  <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJhdHRyaWJ1dGVzXCI6e1wiY29sb3JcIjpcIiM1MjUyNWJcIn0sXCJpbnNlcnRcIjpcIldyaXRlIGEgZmV3IGxpbmVzIGFib3V0IGVhY2ggb25lLiBBIHBhcmFncmFwaCBkZXNjcmliaW5nIGEgZmVhdHVyZSB3aWxsIGJlIGVub3VnaC4gS2VlcCB5b3UgdXNlciBlbmdhZ2VkIVwifSx7XCJpbnNlcnRcIjpcIlxcblwifV19In0=" class="mt-2 mb-4 text-gray-600"></div>
+
+                </div>
+              </div>
+            </div>
+    
+    
+    
+    
+            
+            
+          </div>
+
+     
+</section>
+
+<section id="page-element-3"  class="pb-20 bg-gray-300">
+  <div name="inner-content" class="container mx-auto px-4"> 
+    <div class="flex flex-wrap items-center">
+  
+    
+    <div class="w-full md:w-4/12 px-4 mr-auto ml-auto pt-4">
+      
+      
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg "
+        style="background-color: #7cb342"
+      >
+        <img
+          alt=""
+          data-src="https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/fa64a062b6f4253d03ed77577a79d7a4.jpg/xs.webp"
+          class="w-full align-middle rounded-t-lg"
+        />
+        <blockquote class="relative p-8 mb-4">
+          <svg
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 583 95"
+            class="absolute left-0 w-full block"
+            style="height: 95px; top: -94px;"
+          >
+            <polygon
+              points="-30,95 583,95 583,65"
+              class="fill-current"
+              style="color: #7cb342"
+            ></polygon>
+          </svg>
+          <h4 class="text-xl font-bold text-white">
+            Top Notch Services
+          </h4>
+
+          <div
+            pagews-paragraph="true"
+            input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIlRoZSBBcmN0aWMgT2NlYW4gZnJlZXplcyBldmVyeSB3aW50ZXIgYW5kIG11Y2ggb2YgdGhlIHNlYS1pY2UgdGhlbiB0aGF3cyBldmVyeSBzdW1tZXIsIGFuZCB0aGF0IHByb2Nlc3Mgd2lsbCBjb250aW51ZSB3aGF0ZXZlciBoYXBwZW5zLlxcblwifV19In0="
+            class="text-md font-light mt-2 text-white"
+          ></div>
+        </blockquote>
+      </div>
+    </div>
+      
+
+    <div class="w-full md:w-5/12 px-4 mr-auto ml-auto pt-4">
+      <div
+        class="text-gray-100 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full"
+        style="background-color: #7cb342"
+      >
+        <i class="fa fa-home text-xl"></i>
+      </div>
+      <h3 class="text-3xl mb-2 font-semibold leading-normal">
+        Working with us is a pleasure
+      </h3>
+
+      <div
+        pagews-paragraph="true"
+        input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIkRvbid0IGxldCB5b3VyIHVzZXMgZ3Vlc3MgYnkgYXR0YWNoaW5nIHRvb2x0aXBzIGFuZCBwb3BvdmVzIHRvIGFueSBlbGVtZW50LiBKdXN0IG1ha2Ugc3VyZSB5b3UgZW5hYmxlIHRoZW0gZmlyc3QgdmlhIEphdmFTY3JpcHQuXFxuXFxuVGhlIGtpdCBjb21lcyB3aXRoIHRocmVlIHByZS1idWlsdCBwYWdlcyB0byBoZWxwIHlvdSBnZXQgc3RhcnRlZCBmYXN0ZXIuIFlvdSBjYW4gY2hhbmdlIHRoZSB0ZXh0IGFuZCBpbWFnZXMgYW5kIHlvdSdyZSBnb29kIHRvIGdvLiBKdXN0IG1ha2Ugc3VyZSB5b3UgZW5hYmxlIHRoZW0gZmlyc3QgdmlhIEphdmFTY3JpcHQuXFxuXCJ9XX0ifQ=="
+        class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
+      ></div>
+
+      <a
+        class="bg-black text-gray-100 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3"
+        style="transition: all 0.15s ease 0s;"
+        href="#"
+      >
+        <i class="fa fa-phone"></i> Contact
+      </a>
+    </div>
+    
+
+      
+    </div>
+  </div>
+
+  </div>
+</section>
+
+<div id="page-element-4"  pws-content="true" >
+  <div class="flex flex-wrap justify-center text-center mb-24">
+    <div class="w-full lg:w-6/12 px-4">
+      <h2 class="text-gray-900 text-4xl font-semibold">Here are our heroes</h2>
+      <div
+        pagews-paragraph="true"
+        input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIkFjY29yZGluZyB0byB0aGUgTmF0aW9uYWwgT2NlYW5pYyBhbmQgQXRtb3NwaGVyaWMgQWRtaW5pc3RyYXRpb24sIFRlZCwgU2NhbWJvcywgTlNJRENsZWFkIHNjZW50aXN0LCBwdXRzIHRoZSBwb3RlbnRpYWxseSByZWNvcmQgbWF4aW11bS5cXG5cIn1dfSJ9"
+        class=" leading-relaxed m-4 text-gray-800"
+      ></div>
+      
+      
+      <a
+        class="bg-black  text-gray-100 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3"
+        style="transition: all 0.15s ease 0s;"
+        href="#"
+      >
+        <i class="fa fa-star"></i> Sign Up
+      </a>
+      
+      
+    </div>
+  </div></div>
+
+<div id="page-element-5"  class="container mx-auto px-4 bg-gray-300 my-4">
+  
+  <div class="flex flex-wrap">
+
+    
+    <div class="w-full py-8 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+      <div class="px-6">
+        <img
+          alt="..."
+          data-src="https://randomuser.me/api/portraits/men/44.jpg"
+          class="shadow-lg rounded-full max-w-full mx-auto"
+          style="max-width: 120px;"
+        />
+        <div class="pt-6 text-center">
+          <h5 class="text-xl font-bold">Todd Gould</h5>
+          <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+            Developer
+          </p>
+          <div class="mt-6">
+            
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #3f51b5 ;"     
+            >
+              <i class="fa fa-facebook-f"></i></button
+            >
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #90caf9 ;"     
+            >
+              <i class="fa fa-twitter"></i></button
+            >
+            
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="w-full py-8 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+      <div class="px-6">
+        <img
+          alt="..."
+          data-src="https://randomuser.me/api/portraits/women/67.jpg"
+          class="shadow-lg rounded-full max-w-full mx-auto"
+          style="max-width: 120px;"
+        />
+        <div class="pt-6 text-center">
+          <h5 class="text-xl font-bold">Jessie Wade</h5>
+          <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+            Designer
+          </p>
+          <div class="mt-6">
+            
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #aed581 ;"     
+            >
+              <i class="fa fa-linkedin"></i></button
+            >
+            
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="w-full py-8 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+      <div class="px-6">
+        <img
+          alt="..."
+          data-src="https://randomuser.me/api/portraits/women/45.jpg"
+          class="shadow-lg rounded-full max-w-full mx-auto"
+          style="max-width: 120px;"
+        />
+        <div class="pt-6 text-center">
+          <h5 class="text-xl font-bold">Marley Ellison</h5>
+          <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+            Manager
+          </p>
+          <div class="mt-6">
+            
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #9e9e9e ;"     
+            >
+              <i class="fa fa-github"></i></button
+            >
+            
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="w-full py-8 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+      <div class="px-6">
+        <img
+          alt="..."
+          data-src="https://randomuser.me/api/portraits/men/80.jpg"
+          class="shadow-lg rounded-full max-w-full mx-auto"
+          style="max-width: 120px;"
+        />
+        <div class="pt-6 text-center">
+          <h5 class="text-xl font-bold">Nelson Douglas</h5>
+          <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+            Financial
+          </p>
+          <div class="mt-6">
+            
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #90caf9 ;"     
+            >
+              <i class="fa fa-twitter"></i></button
+            >
+            
+            
+            <button
+              class=" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+              type="button"
+               style="background-color: #aed581 ;"     
+            >
+              <i class="fa fa-linkedin"></i></button
+            >
+            
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    
+  </div>
+
+
+</div>
+
+<section id="page-element-6"  class="relative py-20">
+  <div name="inner-content" class="container mx-auto px-4"> 
+    <div>
+
+  <div class="items-center flex flex-wrap">
+    
+    
+    
+    <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+      <div class="md:pr-12">
+        <div
+          class="text-gray-200 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full"
+          style="background-color: #f06292;"
+        >
+          <i class="fa fa-rocket text-xl"></i>
+        </div>
+        <h3 class="text-3xl font-semibold">A growing company</h3>
+        <div
+          pagews-paragraph="true"
+          input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJhdHRyaWJ1dGVzXCI6e1wiY29sb3JcIjpcIiM3MTgwOTZcIn0sXCJpbnNlcnRcIjpcIlRoZSBleHRlbnNpb24gY29tZXMgd2l0aCB0aHJlZSBwcmUtYnVpbHQgcGFnZXMgdG8gaGVscCB5b3UgZ2V0IHN0YXJ0ZWQgZmFzdGVyLiBZb3UgY2FuIGNoYW5nZSB0aGUgdGV4dCBhbmQgaW1hZ2VzIGFuZCB5b3UncmUgZ29vZCB0byBnby5cIn0se1wiaW5zZXJ0XCI6XCJcXG5cIn1dfSJ9"
+          class="mt-4 text-lg leading-relaxed text-gray-600 "
+        ></div>
+        <ul class="list-none mt-6">
+          
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span
+                  class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200  mr-3"
+                  style="background-color: #f06292;"
+                  ><i class="fa fa-heart"></i
+                ></span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">
+                  Carefully crafted components
+                </h4>
+              </div>
+            </div>
+          </li>
+          
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span
+                  class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200  mr-3"
+                  style="background-color: #f06292;"
+                  ><i class="fa fa-file-code-o"></i
+                ></span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">
+                  Amazing page examples
+                </h4>
+              </div>
+            </div>
+          </li>
+          
+          <li class="py-2">
+            <div class="flex items-center">
+              <div>
+                <span
+                  class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-gray-200  mr-3"
+                  style="background-color: #f06292;"
+                  ><i class="fa fa-dashboard"></i
+                ></span>
+              </div>
+              <div>
+                <h4 class="text-gray-600">
+                  Dynamic components
+                </h4>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+    
+    <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+      <img
+        alt=""
+        class="w-full rounded-lg shadow-lg"
+        data-src="https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/f880f5477edaa9a2d530060237566f66.jpg/xs.webp"
+      />
+    </div>
+    
+    
+    
+    
+  </div>
+</div>
+
+  </div>
+</section>
+
+<div id="page-element-7"  class="container mx-auto bg-white text-black py-4 my-4">
+  
+
+
+  <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+    <h1
+      class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800"
+    >
+      Pricing
+    </h1>
+    <div class="w-full mb-4">
+      <div
+        class="h-1 mx-auto bg-pink-600 w-64 opacity-25 my-0 py-0 rounded-t"
+      ></div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
+      <div
+        class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-gray-100 mt-4"
+      >
+        <div
+          class="flex-1 bg-gray-100 text-gray-600 rounded-t rounded-b-none overflow-hidden shadow"
+        >
+          <div class="p-8 text-3xl font-bold text-center border-b-4">
+            Free
+          </div>
+          <ul class="w-full text-center text-sm ">
+            
+            <li class="border-b py-4">Public site</li>
+            
+            <li class="border-b py-4">No credict card</li>
+            
+            <li class="border-b py-4">Try without an account</li>
+            
+          </ul>
+        </div>
+        <div
+          class="flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6"
+        >
+          <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">
+            
+          </div>
+          <div class="flex items-center justify-center">
+            <a
+              href="/signup"
+              class="mx-auto lg:mx-0 hover:underline bg-transparent border border-blue-500 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+              >Try it now</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-gray-100 mt-4 sm:-mt-6 shadow-lg z-10"
+      >
+        <div
+          class="flex-1 bg-gray-100 rounded-t rounded-b-none overflow-hidden shadow"
+        >
+          <div class="w-full p-8 text-3xl font-bold text-center">
+            Basic
+          </div>
+          <div class="h-1 w-full bg-pink-600 my-0 py-0 rounded-t"></div>
+          <ul class="w-full text-center text-sm ">
+            
+            <li class="border-b py-4">Subdomain</li>
+            
+            <li class="border-b py-4">Custom SEO</li>
+            
+            <li class="border-b py-4">Multiple pages</li>
+            
+          </ul>
+        </div>
+        <div
+          class="flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6"
+        >
+          
+          <div class="w-full pt-6 text-4xl font-bold text-center">
+            $9
+            <span class="text-base">/Monthly</span>
+          </div>
+          
+          <div class="flex items-center justify-center">
+            <a
+              href="/signup"
+              class="mx-auto lg:mx-0 hover:underline bg-pink-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+              >Sign Up</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-gray-100 mt-4"
+      >
+        <div
+          class="flex-1 bg-gray-100 text-gray-600 rounded-t rounded-b-none overflow-hidden shadow"
+        >
+          <div class="p-8 text-3xl font-bold text-center border-b-4">
+            Custom
+          </div>
+          <ul class="w-full text-center text-sm ">
+            
+            <li class="border-b py-4">Priority support</li>
+            
+            <li class="border-b py-4">Custom domain</li>
+            
+          </ul>
+        </div>
+        <div
+          class="flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6"
+        >
+          
+          <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">
+            $29
+            <span class="text-base">/LTD</span>
+          </div>
+          
+          <div class="flex items-center justify-center">
+            <a
+              href="/contact"
+              class="mx-auto lg:mx-0 hover:underline bg-transparent border border-blue-500 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+              >Contact us</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-gray-600 mb-8 text-center"></div>
+
+    <div
+      pagews-paragraph="true"
+      input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJhdHRyaWJ1dGVzXCI6e1wiYmFja2dyb3VuZFwiOlwiI2Y3ZmFmY1wiLFwiY29sb3JcIjpcIiM3MTgwOTZcIn0sXCJpbnNlcnRcIjpcIlByaWNlcyBhcmUgaW4gVVNEIGN1cnJlbmN5LiBFYXJseSBiaXJkIGRpc2NvdW50IGFwcGx5XCJ9LHtcImF0dHJpYnV0ZXNcIjp7XCJhbGlnblwiOlwiY2VudGVyXCJ9LFwiaW5zZXJ0XCI6XCJcXG5cIn1dfSJ9"
+      class="text-gray-600 mb-8 text-center"
+    ></div>
+  </div>
+
+
+</div>
+
+<section id="page-element-8"  class="pb-5 bg-gray-300">
+  <div name="inner-content" class="container mx-auto px-4"> 
+    <div class="-mx-4 flex justify-center">
+            <div class="px-4 lg:w-8/12">
+                <div class="bg-white mt-6 mb-6 rounded shadow">
+                    <div class="py-8 px-6 text-justify text-black">
+                      <h2 class="text-3xl mb-3 uppercase text-left">FAQ</h2>
+                   		<div><div class="w-full mx-auto">
+		<div class="shadow-md ">
+         
+           <div  class="tab w-full overflow-hidden border-t">
+        
+		  <input class="absolute opacity-0 " id="0" type="checkbox" name="tabs">
+		  <label class="block p-5 leading-normal cursor-pointer" for="0">Do you have an API?</label>
+		  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+			
+            <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIlllcywgdGhlcmUgaXMgYW4gQVBJIHRvIGNvbm5lY3QgeW91ciBpbnRlZ3JhdGlvbnNcXG5cIn1dfSJ9" class="mx-auto p-5 text-base font-medium leading-relaxed text-gray-700"></div>
+            
+		  </div>
+		</div>
+            
+
+     
+           <div  class="tab w-full overflow-hidden border-t">
+        
+		  <input class="absolute opacity-0 " id="1" type="checkbox" name="tabs">
+		  <label class="block p-5 leading-normal cursor-pointer" for="1">Do you only support EN, ES, DE?</label>
+		  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+			
+            <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIk5vLCB5b3UgY2FuIGFkZCBhbm90aGVyIGxhbmd1YWdlIGNvbHVtbiBhbmQgeW91IHdpbGwgaGF2ZSBhbm90aGVyIGxhbmd1YWdlIGF2YWlsYWJsZSwgY2hlY2sgdGhlIGV4YW1wbGUgbmF2YmFyLCB5b3UgaGF2ZSBjb21wbGV0ZSBjb250cm9sIG92ZXIgaG93IHlvdSBzZWxlY3QgYW5kIHByZXNlbnQgdGhlIGxhbmd1YWdlc1xcblwifV19In0=" class="mx-auto p-5 text-base font-medium leading-relaxed text-gray-700"></div>
+            
+		  </div>
+		</div>
+            
+
+     
+           <div  class="tab w-full overflow-hidden border-t">
+        
+		  <input class="absolute opacity-0 " id="2" type="checkbox" name="tabs">
+		  <label class="block p-5 leading-normal cursor-pointer" for="2">How this works?</label>
+		  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+			
+            <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIlRoZXJlIGFyZSBvbmx5IHR3byBtb3ZpbmcgcGFydHMgb24gYSBQYWdlV1Mgc2l0ZSwgdGhlIHNwcmVhZHNoZWV0cyBhbmQgaHRtbCB0ZW1wbGF0ZXMuIFRoZSBwYWdlcyBhcmUgdmVyeSBzaW1wbGUsIHlvdSBjcmVhdGUgYW5kIGluY2x1ZGUgdGVtcGxhdGVzIHRoYXQgcmVmZXIgaW5mb3JtYXRpb24gb24geW91ciBzcHJlYWRzaGVldCwgbm90aGluZyBpcyBoYXJkY29kZWQgb24gYSBibG9jaywgeW91IGhhdmUgY29tcGxldGUgY29udHJpb2wgb3ZlciB0aGUgaHRtbCwgY3NzIGFuZCBqcy5cXG5cIn1dfSJ9" class="mx-auto p-5 text-base font-medium leading-relaxed text-gray-700"></div>
+            
+		  </div>
+		</div>
+            
+
+     
+           <div  class="tab w-full overflow-hidden border-t">
+        
+		  <input class="absolute opacity-0 " id="3" type="checkbox" name="tabs">
+		  <label class="block p-5 leading-normal cursor-pointer" for="3">Do you have an API?</label>
+		  <div class="tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal">
+			
+            <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIlllcywgdGhlcmUgaXMgYW4gQVBJIHRvIGNvbm5lY3QgeW91ciBpbnRlZ3JhdGlvbnNcXG5cIn1dfSJ9" class="mx-auto p-5 text-base font-medium leading-relaxed text-gray-700"></div>
+            
+		  </div>
+		</div>
+            
+
+       
+         
+
+  </div>
+</div>
+</div>
+
+                   </div>
+                </div>
+            </div>
+        </div>
+   
+  </div>
+</section>
+
+<section id="page-element-9"  class="pt-20 pb-5 relative block bg-gray-900">
+  
+  <div class="flex flex-wrap justify-center text-center mb-24">
+    <div class="w-full lg:w-6/12 px-4">
+      <h2 class="text-gray-200 text-4xl font-semibold">Here are our heroes</h2>
+      <div
+        pagews-paragraph="true"
+        input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIkFjY29yZGluZyB0byB0aGUgTmF0aW9uYWwgT2NlYW5pYyBhbmQgQXRtb3NwaGVyaWMgQWRtaW5pc3RyYXRpb24sIFRlZCwgU2NhbWJvcywgTlNJRENsZWFkIHNjZW50aXN0LCBwdXRzIHRoZSBwb3RlbnRpYWxseSByZWNvcmQgbWF4aW11bS5cXG5cIn1dfSJ9"
+        class=" leading-relaxed m-4 text-gray-400"
+      ></div>
+      
+      
+      <a
+        class="text-gray-100 active:bg-gray-100 bg-black  text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3"
+        style="transition: all 0.15s ease 0s;"
+        href="#"
+      >
+        <i class="fa fa-star"></i> Sign Up
+      </a>
+      
+      
+    </div>
+  </div>
+</section>
+
+<div id="page-element-10"  pws-content="true" ><footer class="relative bg-gray-300 pt-8 pb-6">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap">
+      <div class="w-full lg:w-6/12 px-4">
+        <h4 class="text-3xl font-semibold"><i class="fa fa-rocket"></i> Brand</h4>
+        
+        <div pagews-paragraph="true" input="eyJlbi1VUyI6IntcIm9wc1wiOlt7XCJpbnNlcnRcIjpcIkZpbmQgdXMgb24gYW55IG9mIHRoZXNlIHBsYXRmb3Jtcywgd2UgcmVzcG9uZCAxLTIgYnVzaW5lc3MgZGF5cy5cIn0se1wiYXR0cmlidXRlc1wiOntcImhlYWRlclwiOjV9LFwiaW5zZXJ0XCI6XCJcXG5cIn1dfSJ9" class="text-lg mt-0 mb-2 text-gray-700 "></div>
+        <div class="mt-6">
+          
+          <button
+            class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-1"
+            type="button"
+          >
+            <i class="flex fa fa-facebook-f"></i></button>
+          
+          <button
+            class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-1"
+            type="button"
+          >
+            <i class="flex fa fa-twitter"></i></button>
+          
+          <button
+            class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-1"
+            type="button"
+          >
+            <i class="flex fa fa-github"></i></button>
+          
+          <button
+            class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-1"
+            type="button"
+          >
+            <i class="flex fa fa-envelope"></i></button>
+          
+      
+        </div>
+      </div>
+      <div class="w-full lg:w-6/12 px-4">
+        <div class="flex flex-wrap items-top mb-6">
+          <div class="w-full lg:w-4/12 px-4 ml-auto">
+            
+            <ul class="list-unstyled">
+               
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >FAQ</a
+                >
+              </li>
+               
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >Help</a
+                >
+              </li>
+               
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >Support</a
+                >
+              </li>
+               
+            </ul>
+          </div>
+          <div class="w-full lg:w-4/12 px-4">
+            
+            <ul class="list-unstyled">
+              
+              
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >Blog</a
+                >
+              </li>
+               
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >About us</a
+                >
+              </li>
+               
+              <li>
+                <a
+                  class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                  href="#"
+                  >Contact Us</a
+                >
+              </li>
+               
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-6 border-gray-400" />
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+        <div class="text-sm text-gray-600 font-semibold py-1">
+          PageWS © 2020
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
+    <script type="text/javascript" src="https:///_PWSR_/lib/pkg/undefined/pagews/index.js"></script>
+
+<script>
+  (async() => {
+
+  const cxtRaw = window.PageWSLib.Utils.decode("eyJkb21haW4iOnsiZG9tYWluIjoiIiwibGFuZyI6eyJkZWZhdWx0IjoiZW4tVVMiLCJvcHRpb25zIjpbImVuLVVTIl19fSwic2l0ZSI6eyJwdWJsaWNhdGlvbiI6eyJtb3VudHBvaW50IjoiIiwiZG9tYWluIjoiIn0sImxhYmVscyI6W119LCJlbnYiOnsibW9kZSI6ImRldiJ9LCJsYW5nIjoiZW4tVVMiLCJtb3VudCI6eyJob3N0IjoiIiwibW91bnRwb2ludCI6IiIsImxvY2FsIjoiIiwibW91bnRwYXRoIjoiIiwibGFuZ3BhdGgiOiIifSwicGFnZSI6eyJyb3V0ZSI6Ii8iLCJ2YWx1ZXMiOnsiZGV0YWlscyI6eyJyb3V0ZSI6Ii8ifX0sImNvbmZpZyI6eyJ2YWx1ZXMiOnt9fX19");
+  const cxt = await window.PageWSLib.Context.get(cxtRaw.domain.domain, cxtRaw);
+  
+
+ window.PageWSLib.update(null, cxt);
+})().catch(e => console.log("main.error: "+ e.toString())) 
+</script>
+
+</body>
+</html>

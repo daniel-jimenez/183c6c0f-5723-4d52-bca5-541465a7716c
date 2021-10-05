@@ -1,0 +1,2318 @@
+{
+  "preprocess": "",
+  "postprocess": "",
+  "elements": [
+    {
+      "name": "navbar",
+      "render": "server",
+      "frame": "",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "\n\n<div>\n  <div>\n<nav class=\"top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 \"\n    >\n      <div\n        class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n      >\n        <div\n          class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n        >\n          <a\n            class=\"text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white\"\n            href=\"https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation\"\n             ><i class=\"fa fa-<%=values.icon%>\"></i> <%=values.brand%></a\n          ><button\n            class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n            type=\"button\"\n                   data-allow=\"true\"\n            onclick=\"window.toggleNavbar('collapse-navbar-container')\"\n          >\n            <i class=\"text-white fa fa-bars\"></i>\n          </button>\n        </div>\n        <div\n          class=\"lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden\"\n          id=\"collapse-navbar-container\"\n        >\n          <ul class=\"flex flex-col lg:flex-row list-none mr-auto\">\n            <% for(const link of values['menu-left'] ){ %>\n            \t<li class=\"flex items-center\">\n              <a\n                class=\"lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold\"\n                href=\"<%=link.route%>\"\n                ><i\n                  class=\"lg:text-gray-300 text-gray-500 fa fa-<%=link.icon%> text-lg leading-lg mr-2\"\n                ></i>\n                <%=link.label%></a>\n            </li>\n            <% } %>\n            \n          </ul>\n          <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n            \n            <% for(const link of values['menu-right'] ){ %>\n            \t<li class=\"flex items-center\">\n              <a\n                class=\"lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold\"\n                href=\"<%=link.route%>\"\n                ><i\n                  class=\"lg:text-gray-300 text-gray-500 fa fa-<%=link.icon%> text-lg leading-lg mr-2\"\n                ></i>\n                <%=link.label%></a>\n            </li>\n            <% } %>\n            <li class=\"flex items-center\">\n              <a\n                 href=\"<%=values.cta.route%>\"\n                class=\"bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3\"\n                type=\"button\"\n                style=\"transition: all 0.15s ease 0s;\"\n              >\n                <i class=\"fa fa-<%=values.cta.icon%>\"></i> <%=values.cta.label%>\n              </a>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </nav>\n\n\n    \n  </div>\n  \n  <%if(cxt.mode===\"editor\" && cxt.type === \"template\") { %>\n  <section class=\"relative block\" \n           style=\"height: 500px;\">\n  <div\n          class=\"absolute top-0 w-full h-full bg-center bg-cover\"\n          data-background=\"https://landing.listws.com/_PWSR_/files/minimaps/galleries/home-page-images/image/5d626097b9ad62c27f11d04cfa20843e.png/sm.webp\"\n        >\n    <span id=\"blackOverlay\" class=\"w-full h-full absolute opacity-75 bg-black\"></span>\n    </div>\n  </section>\n  <% } %>\n  \n</div>\n",
+        "style": "\n.dropdown:hover .dropdown-menu {\n  display: block;\n}\n\n.flag-img { width: 2em; border: 0; }\n",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "brand",
+                "label": {
+                  "en-US": "Brand"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "menu-left",
+                "label": {
+                  "en-US": "Menu left"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/menu-item"
+                }
+              },
+              {
+                "name": "menu-right",
+                "label": {
+                  "en-US": "Menu right"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/menu-item"
+                }
+              },
+              {
+                "name": "cta",
+                "label": {
+                  "en-US": "Main CTA"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "menu-item",
+                  "nullable": false,
+                  "inline": false
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "menu-item",
+            "params": [
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "brand": "Brand",
+          "icon": "rocket",
+          "menu-left": [
+            {
+              "label": {
+                "en-US": "Home"
+              },
+              "icon": "home",
+              "route": "/home"
+            },
+            {
+              "label": {
+                "en-US": "Services"
+              },
+              "icon": "cogs",
+              "route": "/services"
+            }
+          ],
+          "menu-right": [
+            {
+              "label": {
+                "en-US": "Contact"
+              },
+              "icon": "phone",
+              "route": "/contact"
+            }
+          ],
+          "cta": {
+            "label": {
+              "en-US": "Sign Up"
+            },
+            "icon": "sign-in",
+            "route": "#"
+          },
+          "image": {
+            "url": "",
+            "description": {
+              "en-US": ""
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "header",
+      "render": "server",
+      "frame": "",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<div\n        class=\"relative pt-16 pb-32 flex content-center items-center justify-center\"\n        style=\"min-height: <%= values.layout === \"small\" ? \"30vh\" : \"75vh\" %>;\"\n      >\n        <div\n             data-background=\"<%= values.background.url %>\"\n          class=\"absolute top-0 w-full h-full bg-center bg-cover\"\n        >\n          <span\n            id=\"blackOverlay\"\n            class=\"w-full h-full absolute opacity-75 bg-black\"\n          ></span>\n        </div>\n        <div class=\"container relative mx-auto\">\n          <div class=\"items-center flex flex-wrap\">\n            <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n              <div class=\"pr-12\">\n                <h1 class=\"text-white font-semibold text-5xl\">\n                  <%= values.title %>\n                </h1>\n                \n                  \n                <% if(values.layout !== \"small\") { %>\n                  <div pagews-paragraph=\"true\" input=\"<%= values.description %>\" class=\"mt-4 text-lg text-gray-300\"></div>\n                  <%}%>\n                  \n              \n              </div>\n            </div>\n          </div>\n        </div>\n  \n   <% if(values.layout !== \"small\") { %>\n        <div\n          class=\"top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden\"\n          style=\"height: 70px;\"\n        >\n          <svg\n            class=\"absolute bottom-0 overflow-hidden\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            preserveAspectRatio=\"none\"\n            version=\"1.1\"\n            viewBox=\"0 0 2560 100\"\n            x=\"0\"\n            y=\"0\"\n          >\n            <polygon\n              class=\"text-gray-300 fill-current\"\n              points=\"2560 0 2560 100 0 100\"\n            ></polygon>\n          </svg>\n        </div>\n   <%}%>\n</div>\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "background",
+                "label": {
+                  "en-US": "Background"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "image",
+                "config": {
+                  "default": {
+                    "url": "",
+                    "description": {
+                      "en-US": ""
+                    }
+                  }
+                }
+              },
+              {
+                "name": "layout",
+                "label": {
+                  "en-US": "Layout type"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "options",
+                "config": {
+                  "list": [
+                    "small",
+                    "large"
+                  ],
+                  "default": "large"
+                }
+              },
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              }
+            ],
+            "form": {}
+          }
+        ],
+        "values": {
+          "background": {
+            "url": "https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/4a60c8efb55aa210663c7912e5e28842.jpg/xs.webp",
+            "description": {
+              "en-US": ""
+            }
+          },
+          "layout": "small",
+          "title": {
+            "en-US": "Your story starts with us"
+          },
+          "description": {
+            "en-US": "{\"ops\":[{\"insert\":\"This is a simple example of a Landing Page you can build using Tailwind Starter Kit. It features multiple CSS components based on the \"},{\"attributes\":{\"bold\":true},\"insert\":\"Tailwindcss\"},{\"insert\":\" design system.\\n\"}]}"
+          }
+        }
+      }
+    },
+    {
+      "name": "columns",
+      "render": "server",
+      "frame": "<section class=\"pb-20 bg-gray-300 -mt-24\">\n  <%-content%>\n</section>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "\n  <div class=\"flex flex-wrap\">\n         \n    \n    <% for(const col of values.columns) { %>\n    \n    \n    <div class=\"w-full md:w-4/12 px-4 text-center\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg\"\n              >\n                <div class=\"px-4 py-5 flex-auto\">\n                  <div\n                    class=\"text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full\" style=\"background-color: <%= col.color %>;\"\n                  >\n                    <i class=\"fa fa-<%= col.icon %>\"></i>\n                  </div>\n                  <h6 class=\"text-xl font-semibold\">\n                    <%= col.title %></h6>\n                  \n                  <div pagews-paragraph=\"true\" input=\"<%= col.description%>\" class=\"mt-2 mb-4 text-gray-600\"></div>\n\n                </div>\n              </div>\n            </div>\n    \n    \n    <% } %>\n    \n            \n            \n          </div>\n\n     ",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "columns",
+                "label": {
+                  "en-US": "Columns"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/column"
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "column",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "color",
+                "label": {
+                  "en-US": "Color"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "color",
+                "config": {
+                  "default": "#FF0000"
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "columns": [
+            {
+              "title": {
+                "en-US": "Awarded Agency."
+              },
+              "description": {
+                "en-US": "{\"ops\":[{\"attributes\":{\"color\":\"#52525b\"},\"insert\":\"Divide details about your product or agency work into parts. A paragraph describing a feature will be enough.\"},{\"insert\":\"\\n\"}]}"
+              },
+              "icon": "trophy",
+              "color": "#ef5350"
+            },
+            {
+              "title": {
+                "en-US": "Free Revisions."
+              },
+              "description": {
+                "en-US": "{\"ops\":[{\"attributes\":{\"color\":\"#718096\"},\"insert\":\"Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious.\"},{\"insert\":\"\\n\"}]}"
+              },
+              "icon": "code",
+              "color": "#42a5f5"
+            },
+            {
+              "title": {
+                "en-US": "Verified Company."
+              },
+              "description": {
+                "en-US": "{\"ops\":[{\"attributes\":{\"color\":\"#52525b\"},\"insert\":\"Write a few lines about each one. A paragraph describing a feature will be enough. Keep you user engaged!\"},{\"insert\":\"\\n\"}]}"
+              },
+              "icon": "certificate",
+              "color": "#a5d6a7"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "feature",
+      "render": "server",
+      "frame": "<section class=\"pb-20 bg-gray-300\">\n  <div name=\"inner-content\" class=\"container mx-auto px-4\"> \n    <%-content%>\n  </div>\n</section>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<div class=\"flex flex-wrap items-center\">\n  <% if(values.align === \"left\") { %>\n\n  <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto pt-4\">\n    <div\n      class=\"text-gray-100 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full\"\n      style=\"background-color: <%= values.color%>\"\n    >\n      <i class=\"fa fa-<%= values.icon %> text-xl\"></i>\n    </div>\n    <h3 class=\"text-3xl mb-2 font-semibold leading-normal\">\n      <%= values.main.title %>\n    </h3>\n\n    <div\n      pagews-paragraph=\"true\"\n      input=\"<%= values.main.description %>\"\n      class=\"text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700\"\n    ></div>\n\n    <a\n      class=\"bg-black text-gray-100 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3\"\n      style=\"transition: all 0.15s ease 0s;\"\n      href=\"<%= values.cta.route %>\"\n    >\n      <i class=\"fa fa-<%= values.cta.icon %>\"></i> <%= values.cta.label %>\n    </a>\n  </div>\n  <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto pt-4\">\n    <div\n      class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg \"\n      style=\"background-color: <%= values.color%>\"\n    >\n      <img\n        alt=\"<%= values.image.alt%>\"\n        data-src=\"<%= values.image.url%>\"\n        class=\"w-full align-middle rounded-t-lg\"\n      />\n      <blockquote class=\"relative p-8 mb-4\">\n        <svg\n          preserveAspectRatio=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n          viewBox=\"0 0 583 95\"\n          class=\"absolute left-0 w-full block\"\n          style=\"height: 95px; top: -94px;\"\n        >\n          <polygon\n            points=\"-30,95 583,95 583,65\"\n            class=\"fill-current\"\n            style=\"color: <%= values.color%>\"\n          ></polygon>\n        </svg>\n        <h4 class=\"text-xl font-bold text-white\">\n          <%= values.side.title %>\n        </h4>\n\n        <div\n          pagews-paragraph=\"true\"\n          input=\"<%= values.side.description %>\"\n          class=\"text-md font-light mt-2 text-white\"\n        ></div>\n      </blockquote>\n    </div>\n\n    <% } else { %>\n    \n    <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto pt-4\">\n      \n      \n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg \"\n        style=\"background-color: <%= values.color%>\"\n      >\n        <img\n          alt=\"<%= values.image.alt%>\"\n          data-src=\"<%= values.image.url%>\"\n          class=\"w-full align-middle rounded-t-lg\"\n        />\n        <blockquote class=\"relative p-8 mb-4\">\n          <svg\n            preserveAspectRatio=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n            viewBox=\"0 0 583 95\"\n            class=\"absolute left-0 w-full block\"\n            style=\"height: 95px; top: -94px;\"\n          >\n            <polygon\n              points=\"-30,95 583,95 583,65\"\n              class=\"fill-current\"\n              style=\"color: <%= values.color%>\"\n            ></polygon>\n          </svg>\n          <h4 class=\"text-xl font-bold text-white\">\n            <%= values.side.title %>\n          </h4>\n\n          <div\n            pagews-paragraph=\"true\"\n            input=\"<%= values.side.description %>\"\n            class=\"text-md font-light mt-2 text-white\"\n          ></div>\n        </blockquote>\n      </div>\n    </div>\n      \n\n    <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto pt-4\">\n      <div\n        class=\"text-gray-100 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full\"\n        style=\"background-color: <%= values.color%>\"\n      >\n        <i class=\"fa fa-<%= values.icon %> text-xl\"></i>\n      </div>\n      <h3 class=\"text-3xl mb-2 font-semibold leading-normal\">\n        <%= values.main.title %>\n      </h3>\n\n      <div\n        pagews-paragraph=\"true\"\n        input=\"<%= values.main.description %>\"\n        class=\"text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700\"\n      ></div>\n\n      <a\n        class=\"bg-black text-gray-100 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3\"\n        style=\"transition: all 0.15s ease 0s;\"\n        href=\"<%= values.cta.route %>\"\n      >\n        <i class=\"fa fa-<%= values.cta.icon %>\"></i> <%= values.cta.label %>\n      </a>\n    </div>\n    \n\n      <% } %>\n    </div>\n  </div>\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "color",
+                "label": {
+                  "en-US": "Color"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "color",
+                "config": {
+                  "default": "#FF0000"
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "image",
+                "label": {
+                  "en-US": "Image"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "image",
+                "config": {
+                  "default": {
+                    "url": "",
+                    "description": {
+                      "en-US": ""
+                    }
+                  }
+                }
+              },
+              {
+                "name": "align",
+                "label": {
+                  "en-US": "Align"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "options",
+                "config": {
+                  "list": [
+                    "left",
+                    "right"
+                  ],
+                  "default": "left"
+                }
+              },
+              {
+                "name": "main",
+                "label": {
+                  "en-US": "Main side"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "content",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "side",
+                "label": {
+                  "en-US": "Secondary side"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "content",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "cta",
+                "label": {
+                  "en-US": "CTA"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "button",
+                  "nullable": false,
+                  "inline": true
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "content",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "button",
+            "params": [
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "icon": "home",
+          "image": {
+            "url": "https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/fa64a062b6f4253d03ed77577a79d7a4.jpg/xs.webp",
+            "description": {
+              "en-US": ""
+            }
+          },
+          "align": "right",
+          "main": {
+            "title": {
+              "en-US": "Working with us is a pleasure"
+            },
+            "description": {
+              "en-US": "{\"ops\":[{\"insert\":\"Don't let your uses guess by attaching tooltips and popoves to any element. Just make sure you enable them first via JavaScript.\\n\\nThe kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go. Just make sure you enable them first via JavaScript.\\n\"}]}"
+            }
+          },
+          "side": {
+            "title": {
+              "en-US": "Top Notch Services"
+            },
+            "description": {
+              "en-US": "{\"ops\":[{\"insert\":\"The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever happens.\\n\"}]}"
+            }
+          },
+          "cta": {
+            "label": {
+              "en-US": "Contact"
+            },
+            "icon": "phone",
+            "route": "#"
+          },
+          "color": "#7cb342"
+        }
+      }
+    },
+    {
+      "name": "cta",
+      "render": "server",
+      "frame": "",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "\n  <div class=\"flex flex-wrap justify-center text-center mb-24\">\n    <div class=\"w-full lg:w-6/12 px-4\">\n      <h2 class=\"<%= values.style['title'] %> text-4xl font-semibold\"><%= values.title %></h2>\n      <div\n        pagews-paragraph=\"true\"\n        input=\"<%= values.description %>\"\n        class=\" leading-relaxed m-4 <%= values.style['description'] %>\"\n      ></div>\n      \n      <% if(values.cta.label) { %>\n      <a\n        class=\"<%= values.style['cta-bg'] %> <%= values.style['cta-text'] %> text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3\"\n        style=\"transition: all 0.15s ease 0s;\"\n        href=\"<%= values.cta.route %>\"\n      >\n        <i class=\"fa fa-<%= values.cta.icon %>\"></i> <%= values.cta.label %>\n      </a>\n      <%}%>\n      \n    </div>\n  </div>",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              },
+              {
+                "name": "cta",
+                "label": {
+                  "en-US": "CTA"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "button",
+                  "nullable": false,
+                  "inline": true
+                }
+              },
+              {
+                "name": "style",
+                "label": {
+                  "en-US": "Style"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "style",
+                  "nullable": false,
+                  "inline": false
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "button",
+            "params": [
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "style",
+            "params": [
+              {
+                "name": "cta-text",
+                "label": {
+                  "en-US": "CTA text"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "cta-bg",
+                "label": {
+                  "en-US": "CTA Background"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "title": {
+            "en-US": "Here are our heroes"
+          },
+          "description": {
+            "en-US": "{\"ops\":[{\"insert\":\"According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.\\n\"}]}"
+          },
+          "cta": {
+            "icon": "star",
+            "route": "#",
+            "label": {
+              "en-US": "Sign Up"
+            }
+          },
+          "style": {
+            "cta-text": "text-gray-100 active:bg-gray-100",
+            "cta-bg": "bg-black ",
+            "title": "text-gray-900",
+            "description": "text-gray-800"
+          }
+        }
+      }
+    },
+    {
+      "name": "team",
+      "render": "server",
+      "frame": "<div class=\"container mx-auto px-4 bg-gray-300 my-4\">\n  <%-content%>\n</div>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "\n  <div class=\"flex flex-wrap\">\n\n    <%for(const mbr of values.members) { %>\n    <div class=\"w-full py-8 md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4\">\n      <div class=\"px-6\">\n        <img\n          alt=\"...\"\n          data-src=\"<%= mbr.image.url %>\"\n          class=\"shadow-lg rounded-full max-w-full mx-auto\"\n          style=\"max-width: 120px;\"\n        />\n        <div class=\"pt-6 text-center\">\n          <h5 class=\"text-xl font-bold\"><%= mbr.name %></h5>\n          <p class=\"mt-1 text-sm text-gray-500 uppercase font-semibold\">\n            <%= mbr.role %>\n          </p>\n          <div class=\"mt-6\">\n            \n            <%for(const ctn of mbr.contacts) { %>\n            \n            <button\n              class=\" text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1\"\n              type=\"button\"\n               style=\"background-color: <%= ctn.color %> ;\"     \n            >\n              <i class=\"fa fa-<%= ctn.icon %>\"></i></button\n            >\n            <%}%>\n \n          </div>\n        </div>\n      </div>\n    </div>\n <% } %>\n    \n  </div>\n\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "members",
+                "label": {
+                  "en-US": "Members"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/member"
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "member",
+            "params": [
+              {
+                "name": "image",
+                "label": {
+                  "en-US": "Image"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "image",
+                "config": {
+                  "default": {
+                    "url": "",
+                    "description": {
+                      "en-US": ""
+                    }
+                  }
+                }
+              },
+              {
+                "name": "name",
+                "label": {
+                  "en-US": "Name"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "role",
+                "label": {
+                  "en-US": "Role"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "contacts",
+                "label": {
+                  "en-US": "Contacts"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/contact"
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "contact",
+            "params": [
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "color",
+                "label": {
+                  "en-US": "Color"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "color",
+                "config": {
+                  "default": "#FF0000"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "members": [
+            {
+              "image": {
+                "url": "https://randomuser.me/api/portraits/men/44.jpg",
+                "description": {
+                  "en-US": ""
+                }
+              },
+              "name": "Todd Gould",
+              "role": {
+                "en-US": "Developer"
+              },
+              "contacts": [
+                {
+                  "icon": "facebook-f",
+                  "color": "#3f51b5",
+                  "route": "#"
+                },
+                {
+                  "icon": "twitter",
+                  "color": "#90caf9",
+                  "route": "#"
+                }
+              ]
+            },
+            {
+              "image": {
+                "url": "https://randomuser.me/api/portraits/women/67.jpg",
+                "description": {
+                  "en-US": ""
+                }
+              },
+              "name": "Jessie Wade",
+              "role": {
+                "en-US": "Designer"
+              },
+              "contacts": [
+                {
+                  "icon": "linkedin",
+                  "color": "#aed581",
+                  "route": "#"
+                }
+              ]
+            },
+            {
+              "image": {
+                "url": "https://randomuser.me/api/portraits/women/45.jpg",
+                "description": {
+                  "en-US": ""
+                }
+              },
+              "name": "Marley Ellison",
+              "role": {
+                "en-US": "Manager"
+              },
+              "contacts": [
+                {
+                  "icon": "github",
+                  "color": "#9e9e9e",
+                  "route": "#"
+                }
+              ]
+            },
+            {
+              "image": {
+                "url": "https://randomuser.me/api/portraits/men/80.jpg",
+                "description": {
+                  "en-US": ""
+                }
+              },
+              "name": "Nelson Douglas",
+              "role": {
+                "en-US": "Financial"
+              },
+              "contacts": [
+                {
+                  "icon": "twitter",
+                  "color": "#90caf9",
+                  "route": "#"
+                },
+                {
+                  "icon": "linkedin",
+                  "color": "#aed581",
+                  "route": "#"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "features-slim",
+      "render": "server",
+      "frame": "<section class=\"relative py-20\">\n  <div name=\"inner-content\" class=\"container mx-auto px-4\"> \n    <%-content%>\n  </div>\n</section>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<div>\n<% const iconColor = \"text-gray-200\"; %>\n  <div class=\"items-center flex flex-wrap\">\n    <% if(values.align === \"left\") {%>\n     \n    <div class=\"w-full md:w-4/12 ml-auto mr-auto px-4\"> \n      <img\n        alt=\"<%= values.image.alt%>\"\n        class=\"w-full rounded-lg shadow-lg\"\n        data-src=\"<%= values.image.url%>\"\n      />\n    </div>\n    <div class=\"w-full md:w-5/12 ml-auto mr-auto px-4\">\n      <div class=\"md:pr-12\">\n        <div\n          class=\"<%=iconColor%> p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full\"\n          style=\"background-color: <%= values.color%>;\"\n        >\n          <i class=\"fa fa-<%= values.icon%> text-xl\"></i>\n        </div>\n        <h3 class=\"text-3xl font-semibold\"><%= values.title%></h3>\n        <div\n          pagews-paragraph=\"true\"\n          input=\"<%=values.description%>\"\n          class=\"mt-4 text-lg leading-relaxed text-gray-600 \"\n        ></div>\n        <ul class=\"list-none mt-6\">\n          <% for(const bullet of values.bullets) {%>\n          <li class=\"py-2\">\n            <div class=\"flex items-center\">\n              <div>\n                <span\n                  class=\"text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full <%=iconColor%>  mr-3\"\n                  style=\"background-color: <%= values.color%>;\"\n                  ><i class=\"fa fa-<%= bullet.icon %>\"></i\n                ></span>\n              </div>\n              <div>\n                <h4 class=\"text-gray-600\">\n                  <%= bullet.label %>\n                </h4>\n              </div>\n            </div>\n          </li>\n          <% } %>\n        </ul>\n      </div>\n    </div>\n    \n    <% } else {%>\n    \n    \n    <div class=\"w-full md:w-5/12 ml-auto mr-auto px-4\">\n      <div class=\"md:pr-12\">\n        <div\n          class=\"<%=iconColor%> p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full\"\n          style=\"background-color: <%= values.color%>;\"\n        >\n          <i class=\"fa fa-<%= values.icon%> text-xl\"></i>\n        </div>\n        <h3 class=\"text-3xl font-semibold\"><%= values.title%></h3>\n        <div\n          pagews-paragraph=\"true\"\n          input=\"<%= values.description%>\"\n          class=\"mt-4 text-lg leading-relaxed text-gray-600 \"\n        ></div>\n        <ul class=\"list-none mt-6\">\n          <% for(const bullet of values.bullets) {%>\n          <li class=\"py-2\">\n            <div class=\"flex items-center\">\n              <div>\n                <span\n                  class=\"text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full <%=iconColor%>  mr-3\"\n                  style=\"background-color: <%= values.color%>;\"\n                  ><i class=\"fa fa-<%= bullet.icon %>\"></i\n                ></span>\n              </div>\n              <div>\n                <h4 class=\"text-gray-600\">\n                  <%= bullet.label %>\n                </h4>\n              </div>\n            </div>\n          </li>\n          <% } %>\n        </ul>\n      </div>\n    </div>\n    \n    <div class=\"w-full md:w-4/12 ml-auto mr-auto px-4\">\n      <img\n        alt=\"<%= values.image.alt%>\"\n        class=\"w-full rounded-lg shadow-lg\"\n        data-src=\"<%= values.image.url%>\"\n      />\n    </div>\n    \n    <% } %>\n    \n    \n  </div>\n</div>\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "color",
+                "label": {
+                  "en-US": "Color"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "color",
+                "config": {
+                  "default": "#FF0000"
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              },
+              {
+                "name": "align",
+                "label": {
+                  "en-US": "Align"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "options",
+                "config": {
+                  "list": [
+                    "left",
+                    "right"
+                  ],
+                  "default": "left"
+                }
+              },
+              {
+                "name": "bullets",
+                "label": {
+                  "en-US": "Bullets"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/bullet"
+                }
+              },
+              {
+                "name": "image",
+                "label": {
+                  "en-US": "Image"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "image",
+                "config": {
+                  "default": {
+                    "url": "",
+                    "description": {
+                      "en-US": ""
+                    }
+                  }
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "bullet",
+            "params": [
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "color": "#f06292",
+          "icon": "rocket",
+          "title": {
+            "en-US": "A growing company"
+          },
+          "description": {
+            "en-US": "{\"ops\":[{\"attributes\":{\"color\":\"#718096\"},\"insert\":\"The extension comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go.\"},{\"insert\":\"\\n\"}]}"
+          },
+          "align": "right",
+          "bullets": [
+            {
+              "icon": "heart",
+              "label": {
+                "en-US": "Carefully crafted components"
+              }
+            },
+            {
+              "icon": "file-code-o",
+              "label": {
+                "en-US": "Amazing page examples"
+              }
+            },
+            {
+              "icon": "dashboard",
+              "label": {
+                "en-US": "Dynamic components"
+              }
+            }
+          ],
+          "image": {
+            "url": "https://tailwind-kit.pagews.app/_PWSR_/files/minimaps/galleries/430f0e12-8c8b-4bc8-91dc-fb45ae47e806-site-images/image/f880f5477edaa9a2d530060237566f66.jpg/xs.webp",
+            "description": {
+              "en-US": ""
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "pricing",
+      "render": "server",
+      "frame": "<div class=\"container mx-auto bg-white text-black py-4 my-4\">\n  <%-content%>\n</div>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<% const data = { left : values.tiers[0], center : values.tiers[1], right :\nvalues.tiers[2] }; const bgcolor = values.style.background; %>\n\n\n  <div class=\"container mx-auto px-2 pt-4 pb-12 text-gray-800\">\n    <h1\n      class=\"w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800\"\n    >\n      <%=values.title%>\n    </h1>\n    <div class=\"w-full mb-4\">\n      <div\n        class=\"h-1 mx-auto <%=bgcolor%> w-64 opacity-25 my-0 py-0 rounded-t\"\n      ></div>\n    </div>\n\n    <div class=\"flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4\">\n      <div\n        class=\"flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-gray-100 mt-4\"\n      >\n        <div\n          class=\"flex-1 bg-gray-100 text-gray-600 rounded-t rounded-b-none overflow-hidden shadow\"\n        >\n          <div class=\"p-8 text-3xl font-bold text-center border-b-4\">\n            <%= data.left.name %>\n          </div>\n          <ul class=\"w-full text-center text-sm \">\n            <% data.left.features.forEach(function ({label}) { %>\n            <li class=\"border-b py-4\"><%= label %></li>\n            <% }) %>\n          </ul>\n        </div>\n        <div\n          class=\"flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6\"\n        >\n          <div class=\"w-full pt-6 text-3xl text-gray-600 font-bold text-center\">\n            <% if(data.left.price) { %>\n            <div class=\"w-full pt-6 text-4xl font-bold text-center\">\n              <strike class=\"text-gray-500 text-base\"></strike> $<%=\n              data.left.price %>\n              <span class=\"text-base\">/<%= data.left.period %></span>\n            </div>\n\n            <% } %>\n          </div>\n          <div class=\"flex items-center justify-center\">\n            <a\n              href=\"<%= data.left.route %>\"\n              class=\"mx-auto lg:mx-0 hover:underline bg-transparent border border-blue-500 font-bold rounded-full my-6 py-4 px-8 shadow-lg\"\n              ><%= data.left.cta %></a\n            >\n          </div>\n        </div>\n      </div>\n\n      <div\n        class=\"flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-gray-100 mt-4 sm:-mt-6 shadow-lg z-10\"\n      >\n        <div\n          class=\"flex-1 bg-gray-100 rounded-t rounded-b-none overflow-hidden shadow\"\n        >\n          <div class=\"w-full p-8 text-3xl font-bold text-center\">\n            <%= data.center.name%>\n          </div>\n          <div class=\"h-1 w-full <%= bgcolor %> my-0 py-0 rounded-t\"></div>\n          <ul class=\"w-full text-center text-sm \">\n            <% data.center.features.forEach(function ({label}) { %>\n            <li class=\"border-b py-4\"><%= label %></li>\n            <% }) %>\n          </ul>\n        </div>\n        <div\n          class=\"flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6\"\n        >\n          <% if(data.center.price) { %>\n          <div class=\"w-full pt-6 text-4xl font-bold text-center\">\n            $<%= data.center.price%>\n            <span class=\"text-base\">/<%= data.center.period%></span>\n          </div>\n          <% } %>\n          <div class=\"flex items-center justify-center\">\n            <a\n              href=\"<%= data.center.route %>\"\n              class=\"mx-auto lg:mx-0 hover:underline <%= bgcolor %> text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg\"\n              ><%= data.center.cta %></a\n            >\n          </div>\n        </div>\n      </div>\n\n      <div\n        class=\"flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-gray-100 mt-4\"\n      >\n        <div\n          class=\"flex-1 bg-gray-100 text-gray-600 rounded-t rounded-b-none overflow-hidden shadow\"\n        >\n          <div class=\"p-8 text-3xl font-bold text-center border-b-4\">\n            <%= data.right.name %>\n          </div>\n          <ul class=\"w-full text-center text-sm \">\n            <% data.right.features.forEach(function ({label}) { %>\n            <li class=\"border-b py-4\"><%= label %></li>\n            <% }) %>\n          </ul>\n        </div>\n        <div\n          class=\"flex-none mt-auto bg-gray-100 rounded-b rounded-t-none overflow-hidden shadow p-6\"\n        >\n          <% if(data.right.price) { %>\n          <div class=\"w-full pt-6 text-3xl text-gray-600 font-bold text-center\">\n            $<%= data.right.price %>\n            <span class=\"text-base\">/<%= data.right.period %></span>\n          </div>\n          <% } %>\n          <div class=\"flex items-center justify-center\">\n            <a\n              href=\"<%= data.right.route %>\"\n              class=\"mx-auto lg:mx-0 hover:underline bg-transparent border border-blue-500 font-bold rounded-full my-6 py-4 px-8 shadow-lg\"\n              ><%= data.right.cta %></a\n            >\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <div class=\"text-gray-600 mb-8 text-center\"></div>\n\n    <div\n      pagews-paragraph=\"true\"\n      input=\"<%= values.info%>\"\n      class=\"text-gray-600 mb-8 text-center\"\n    ></div>\n  </div>\n\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "tiers",
+                "label": {
+                  "en-US": "Tiers"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/tier"
+                }
+              },
+              {
+                "name": "style",
+                "label": {
+                  "en-US": "Style"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "style",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "info",
+                "label": {
+                  "en-US": "Information"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "tier",
+            "params": [
+              {
+                "name": "name",
+                "label": {
+                  "en-US": "Name"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "price",
+                "label": {
+                  "en-US": "Price"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "number",
+                "config": {
+                  "default": 0
+                }
+              },
+              {
+                "name": "period",
+                "label": {
+                  "en-US": "Period"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "cta",
+                "label": {
+                  "en-US": "CTA"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "features",
+                "label": {
+                  "en-US": "Features"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/feature"
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "style",
+            "params": [
+              {
+                "name": "background",
+                "label": {
+                  "en-US": "Background"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "feature",
+            "params": [
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "title": {
+            "en-US": "Pricing"
+          },
+          "tiers": [
+            {
+              "name": {
+                "en-US": "Free"
+              },
+              "price": 0,
+              "period": {},
+              "route": "/signup",
+              "cta": {
+                "en-US": "Try it now"
+              },
+              "features": [
+                {
+                  "label": {
+                    "en-US": "Public site"
+                  }
+                },
+                {
+                  "label": {
+                    "en-US": "No credict card"
+                  }
+                },
+                {
+                  "label": {
+                    "en-US": "Try without an account"
+                  }
+                }
+              ]
+            },
+            {
+              "name": {
+                "en-US": "Basic"
+              },
+              "price": 9,
+              "period": {
+                "en-US": "Monthly"
+              },
+              "route": "/signup",
+              "cta": {
+                "en-US": "Sign Up"
+              },
+              "features": [
+                {
+                  "label": {
+                    "en-US": "Subdomain"
+                  }
+                },
+                {
+                  "label": {
+                    "en-US": "Custom SEO"
+                  }
+                },
+                {
+                  "label": {
+                    "en-US": "Multiple pages"
+                  }
+                }
+              ]
+            },
+            {
+              "name": {
+                "en-US": "Custom"
+              },
+              "price": 29,
+              "period": {
+                "en-US": "LTD"
+              },
+              "route": "/contact",
+              "cta": {
+                "en-US": "Contact us"
+              },
+              "features": [
+                {
+                  "label": {
+                    "en-US": "Priority support"
+                  }
+                },
+                {
+                  "label": {
+                    "en-US": "Custom domain"
+                  }
+                }
+              ]
+            }
+          ],
+          "info": {
+            "en-US": "{\"ops\":[{\"attributes\":{\"background\":\"#f7fafc\",\"color\":\"#718096\"},\"insert\":\"Prices are in USD currency. Early bird discount apply\"},{\"attributes\":{\"align\":\"center\"},\"insert\":\"\\n\"}]}"
+          },
+          "style": {
+            "background": "bg-pink-600"
+          }
+        }
+      }
+    },
+    {
+      "name": "faq",
+      "render": "server",
+      "frame": "<section class=\"pb-5 bg-gray-300\">\n  <div name=\"inner-content\" class=\"container mx-auto px-4\"> \n    <%-content%>\n  </div>\n</section>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<div class=\"-mx-4 flex justify-center\">\n            <div class=\"px-4 lg:w-8/12\">\n                <div class=\"bg-white mt-6 mb-6 rounded shadow\">\n                    <div class=\"py-8 px-6 text-justify text-black\">\n                      <h2 class=\"text-3xl mb-3 uppercase text-left\"><%= values.title%></h2>\n                   \t\t<div><div class=\"w-full mx-auto\">\n\t\t<div class=\"shadow-md \">\n        <% \n        \n          values.items.forEach(function ({ title, content}, id) {\n     \n       %> \n           <div  class=\"tab w-full overflow-hidden border-t\">\n        \n\t\t  <input class=\"absolute opacity-0 \" id=\"<%= id %>\" type=\"checkbox\" name=\"tabs\">\n\t\t  <label class=\"block p-5 leading-normal cursor-pointer\" for=\"<%= id %>\"><%= title %></label>\n\t\t  <div class=\"tab-content overflow-hidden border-l-2 bg-grey-lightest border-indigo leading-normal\">\n\t\t\t\n            <div pagews-paragraph=\"true\" input=\"<%= content%>\" class=\"mx-auto p-5 text-base font-medium leading-relaxed text-gray-700\"></div>\n            \n\t\t  </div>\n\t\t</div>\n            \n\n    <% }) %>   \n         \n\n  </div>\n</div>\n</div>\n\n                   </div>\n                </div>\n            </div>\n        </div>\n   ",
+        "style": "/*begin*/\n/* Tab content - closed */\n.tab-content {\n\tmax-height: 0;\n\t-webkit-transition: max-height .35s;\n\t-o-transition: max-height .35s;\n\ttransition: max-height .35s;\n}\n\n/* :checked - resize to full height */\n.tab input:checked ~ .tab-content {\n\tmax-height: 100vh;\n}\n\n/* Label formatting when open */\n.tab input:checked + label{\n\t/*@apply text-xl p-5 border-l-2 border-indigo bg-grey-lightest text-indigo*/\n\tfont-size: 1.25rem; /*.text-xl*/\n\tpadding: 1.25rem; /*.p-5*/\n\tborder-left-width: 2px; /*.border-l-2*/\n\tborder-color: <%=values.color%>; /*.border-indigo*/\n\tbackground-color: #f8fafc; /*.bg-grey-lightest */\n\tcolor: <%=values.color%>; /*.text-indigo*/\n}\n\n\n/* Icon */\n.tab label::after {\n\tfloat:right;\n\tright: 0;\n\ttop: 0;\n\tdisplay: block;\n\twidth: 1.5em;\n\theight: 1.5em;\n\tline-height: 1.5;\n\tfont-size: 1.25rem;\n\ttext-align: center;\n\t-webkit-transition: all .35s;\n\t-o-transition: all .35s;\n\ttransition: all .35s;\n\n}\n/* Icon formatting - closed */\n.tab input[type=checkbox] + label::after {\n\tcontent: \"+\";\n\tfont-weight:bold; /*.font-bold*/\n\tborder-width: 1px; /*.border*/\n\tborder-radius: 9999px; /*.rounded-full */\n\tborder-color: #b8c2cc; /*.border-grey*/\n}\n.tab input[type=radio] + label::after {\n\tcontent: \"\\25BE\";\n\tfont-weight:bold; /*.font-bold*/\n\tborder-width: 1px; /*.border*/\n\tborder-radius: 9999px; /*.rounded-full */\n\tborder-color: #b8c2cc; /*.border-grey*/\n}\n/* Icon formatting - open */\n.tab input[type=checkbox]:checked + label::after {\n\ttransform: rotate(315deg);\n\tbackground-color: <%=values.color%>; /*.bg-indigo*/\n\tcolor: #f8fafc; /*.text-grey-lightest*/\n}\n.tab input[type=radio]:checked + label::after {\n\ttransform: rotateX(180deg);\n\tbackground-color: <%=values.color%>; /*.bg-indigo*/\n\tcolor: #f8fafc; /*.text-grey-lightest*/\n}\n\n/*end*/",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "items",
+                "label": {
+                  "en-US": "Items"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/item"
+                }
+              },
+              {
+                "name": "color",
+                "label": {
+                  "en-US": "Color"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "color",
+                "config": {
+                  "default": "#FF0000"
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "item",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "content",
+                "label": {
+                  "en-US": "Content"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "title": {
+            "en-US": "FAQ"
+          },
+          "items": [
+            {
+              "title": {
+                "en-US": "Do you have an API?"
+              },
+              "content": {
+                "en-US": "{\"ops\":[{\"insert\":\"Yes, there is an API to connect your integrations\\n\"}]}"
+              }
+            },
+            {
+              "title": {
+                "en-US": "Do you only support EN, ES, DE?"
+              },
+              "content": {
+                "en-US": "{\"ops\":[{\"insert\":\"No, you can add another language column and you will have another language available, check the example navbar, you have complete control over how you select and present the languages\\n\"}]}"
+              }
+            },
+            {
+              "title": {
+                "en-US": "How this works?"
+              },
+              "content": {
+                "en-US": "{\"ops\":[{\"insert\":\"There are only two moving parts on a PageWS site, the spreadsheets and html templates. The pages are very simple, you create and include templates that refer information on your spreadsheet, nothing is hardcoded on a block, you have complete contriol over the html, css and js.\\n\"}]}"
+              }
+            },
+            {
+              "title": {
+                "en-US": "Do you have an API?"
+              },
+              "content": {
+                "en-US": "{\"ops\":[{\"insert\":\"Yes, there is an API to connect your integrations\\n\"}]}"
+              }
+            }
+          ],
+          "color": "#f06292"
+        }
+      }
+    },
+    {
+      "name": "cta",
+      "render": "server",
+      "frame": "<section class=\"pt-20 pb-5 relative block bg-gray-900\">\n  <%-content%>\n</section>",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "\n  <div class=\"flex flex-wrap justify-center text-center mb-24\">\n    <div class=\"w-full lg:w-6/12 px-4\">\n      <h2 class=\"<%= values.style['title'] %> text-4xl font-semibold\"><%= values.title %></h2>\n      <div\n        pagews-paragraph=\"true\"\n        input=\"<%= values.description %>\"\n        class=\" leading-relaxed m-4 <%= values.style['description'] %>\"\n      ></div>\n      \n      <% if(values.cta.label) { %>\n      <a\n        class=\"<%= values.style['cta-bg'] %> <%= values.style['cta-text'] %> text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 mb-3\"\n        style=\"transition: all 0.15s ease 0s;\"\n        href=\"<%= values.cta.route %>\"\n      >\n        <i class=\"fa fa-<%= values.cta.icon %>\"></i> <%= values.cta.label %>\n      </a>\n      <%}%>\n      \n    </div>\n  </div>",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              },
+              {
+                "name": "cta",
+                "label": {
+                  "en-US": "CTA"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "button",
+                  "nullable": false,
+                  "inline": true
+                }
+              },
+              {
+                "name": "style",
+                "label": {
+                  "en-US": "Style"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "style",
+                  "nullable": false,
+                  "inline": false
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "button",
+            "params": [
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "style",
+            "params": [
+              {
+                "name": "cta-text",
+                "label": {
+                  "en-US": "CTA text"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "cta-bg",
+                "label": {
+                  "en-US": "CTA Background"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "title": {
+            "en-US": "Here are our heroes"
+          },
+          "description": {
+            "en-US": "{\"ops\":[{\"insert\":\"According to the National Oceanic and Atmospheric Administration, Ted, Scambos, NSIDClead scentist, puts the potentially record maximum.\\n\"}]}"
+          },
+          "cta": {
+            "icon": "star",
+            "route": "#",
+            "label": {
+              "en-US": "Sign Up"
+            }
+          },
+          "style": {
+            "cta-text": "bg-black ",
+            "cta-bg": "text-gray-100 active:bg-gray-100",
+            "title": "text-gray-200",
+            "description": "text-gray-400"
+          }
+        }
+      }
+    },
+    {
+      "name": "footer",
+      "render": "server",
+      "frame": "",
+      "style": "",
+      "preprocess": "",
+      "postprocess": "",
+      "type": "code",
+      "config": {
+        "html": "<footer class=\"relative bg-gray-300 pt-8 pb-6\">\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold\"><i class=\"fa fa-<%= values.icon%>\"></i> <%= values.brand%></h4>\n        \n        <div pagews-paragraph=\"true\" input=\"<%= values.description%>\" class=\"text-lg mt-0 mb-2 text-gray-700 \"></div>\n        <div class=\"mt-6\">\n          <%for(const cti of values.contacts) { %>\n          <button\n            class=\"bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-1\"\n            type=\"button\"\n          >\n            <i class=\"flex fa fa-<%=cti.icon%>\"></i></button>\n          <% } %>\n      \n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            \n            <ul class=\"list-unstyled\">\n               <% for(const mti of values['menu-left'].links) { %>\n              <li>\n                <a\n                  class=\"text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm\"\n                  href=\"<%=mti.route%>\"\n                  ><%=mti.label%></a\n                >\n              </li>\n               <% } %>\n            </ul>\n          </div>\n          <div class=\"w-full lg:w-4/12 px-4\">\n            \n            <ul class=\"list-unstyled\">\n              \n              <% for(const mti of values['menu-right'].links) { %>\n              <li>\n                <a\n                  class=\"text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm\"\n                  href=\"<%=mti.route%>\"\n                  ><%=mti.label%></a\n                >\n              </li>\n               <% } %>\n              \n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-gray-400\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-gray-600 font-semibold py-1\">\n          <%=values.copyright%>\n          \n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n",
+        "style": "",
+        "preprocess": "",
+        "postprocess": "",
+        "types": [
+          {
+            "name": "root",
+            "params": [
+              {
+                "name": "brand",
+                "label": {
+                  "en-US": "Brand"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "copyright",
+                "label": {
+                  "en-US": "Copyright"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              },
+              {
+                "name": "menu-left",
+                "label": {
+                  "en-US": "Menu left"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "menu",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "menu-center",
+                "label": {
+                  "en-US": "Menu center"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "menu",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "menu-right",
+                "label": {
+                  "en-US": "Menu right"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "object",
+                "config": {
+                  "type": "menu",
+                  "nullable": false,
+                  "inline": false
+                }
+              },
+              {
+                "name": "contacts",
+                "label": {
+                  "en-US": "Contacts"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/contact-item"
+                }
+              },
+              {
+                "name": "description",
+                "label": {
+                  "en-US": "Description"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "paragraph",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  }
+                }
+              }
+            ],
+            "form": {}
+          },
+          {
+            "name": "menu",
+            "params": [
+              {
+                "name": "title",
+                "label": {
+                  "en-US": "Title"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "links",
+                "label": {
+                  "en-US": "Links"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "list",
+                "config": {
+                  "type": "system/menu-item"
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "menu-item",
+            "params": [
+              {
+                "name": "label",
+                "label": {
+                  "en-US": "Label"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text:lang",
+                "config": {
+                  "default": {
+                    "en-US": ""
+                  },
+                  "textarea": false
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          },
+          {
+            "name": "contact-item",
+            "params": [
+              {
+                "name": "icon",
+                "label": {
+                  "en-US": "Icon"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "icon",
+                "config": {
+                  "default": "home"
+                }
+              },
+              {
+                "name": "route",
+                "label": {
+                  "en-US": "Route"
+                },
+                "required": false,
+                "hidden": false,
+                "type": "text",
+                "config": {
+                  "default": ""
+                }
+              }
+            ],
+            "form": {
+              "label": {},
+              "description": {}
+            }
+          }
+        ],
+        "values": {
+          "brand": "Brand",
+          "icon": "rocket",
+          "copyright": "PageWS © 2020",
+          "description": {
+            "en-US": "{\"ops\":[{\"insert\":\"Find us on any of these platforms, we respond 1-2 business days.\"},{\"attributes\":{\"header\":5},\"insert\":\"\\n\"}]}"
+          },
+          "menu-left": {
+            "title": {
+              "en-US": "Links"
+            },
+            "links": [
+              {
+                "label": {
+                  "en-US": "FAQ"
+                },
+                "route": "#"
+              },
+              {
+                "label": {
+                  "en-US": "Help"
+                },
+                "route": "#"
+              },
+              {
+                "label": {
+                  "en-US": "Support"
+                },
+                "route": "#"
+              }
+            ]
+          },
+          "menu-center": {
+            "title": {
+              "en-US": "Legal"
+            },
+            "links": [
+              {
+                "label": {
+                  "en-US": "Terms"
+                },
+                "route": "#"
+              },
+              {
+                "label": {
+                  "en-US": "Privacy"
+                },
+                "route": "#"
+              }
+            ]
+          },
+          "menu-right": {
+            "title": {
+              "en-US": "Company"
+            },
+            "links": [
+              {
+                "label": {
+                  "en-US": "Blog"
+                },
+                "route": "#"
+              },
+              {
+                "label": {
+                  "en-US": "About us"
+                },
+                "route": "#"
+              },
+              {
+                "label": {
+                  "en-US": "Contact Us"
+                },
+                "route": "#"
+              }
+            ]
+          },
+          "contacts": [
+            {
+              "icon": "facebook-f",
+              "route": "#"
+            },
+            {
+              "icon": "twitter",
+              "route": "#"
+            },
+            {
+              "icon": "github",
+              "route": "#"
+            },
+            {
+              "icon": "envelope",
+              "route": "#"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "parentPageConfig": null,
+  "pageConfig": {
+    "document": {
+      "favicon": "",
+      "inlineHead": "",
+      "metadata": [
+        {
+          "type": "name",
+          "content": "width=device-width, initial-scale=1.0",
+          "value": "viewport"
+        }
+      ],
+      "body": {
+        "classes": "text-gray-800 antialiased",
+        "tag": ""
+      },
+      "title": {
+        "en-US": ""
+      },
+      "description": {}
+    },
+    "style": {
+      "inline": "",
+      "includes": [
+        "https://{{domain}}/_PWSR_/lib/tailwind/tailwind.min.css",
+        "https://{{domain}}/_PWSR_/lib/font-awesome-4.7.0/css/font-awesome.min.css"
+      ]
+    },
+    "script": {
+      "inline": "",
+      "includes": []
+    },
+    "types": [
+      {
+        "name": "root",
+        "params": [],
+        "form": null
+      }
+    ],
+    "values": {}
+  },
+  "name": "home",
+  "route": "/",
+  "key": "pages",
+  "index": "home",
+  "createdAt": "2021-10-05T20:23:53.521Z",
+  "updatedAt": "2021-10-05T20:23:53.521Z"
+}
